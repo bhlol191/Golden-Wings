@@ -1,0 +1,651 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مطعم بروستد الأجنحة الذهبية | Golden Wings Broasted</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309'
+                        },
+                        brand: {
+                            dark: '#121212',
+                            card: '#1e1e1e',
+                            red: '#dc2626',
+                            green: '#16a34a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts (Tajawal & Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background-color: #0f0f10;
+            color: #f3f4f6;
+        }
+        
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f59e0b;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-500 selection:text-black">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-black/90 backdrop-blur-md border-b border-gold-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full gold-gradient-bg flex items-center justify-center text-black font-extrabold text-2xl shadow-lg shadow-gold-500/20">
+                        <i class="fa-solid fa-drumstick-bite"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xl sm:text-2xl font-black text-white leading-tight">بروستد الأجنحة الذهبية</span>
+                        <span class="block text-xs font-semibold text-gold-400 tracking-wider">GOLDEN WINGS BROASTED</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-bold">
+                    <a href="#hero" class="text-white hover:text-gold-400 transition-colors">الرئيسية</a>
+                    <a href="#menu" class="text-gray-300 hover:text-gold-400 transition-colors">قائمة الطعام</a>
+                    <a href="#features" class="text-gray-300 hover:text-gold-400 transition-colors">خدماتنا</a>
+                    <a href="#location" class="text-gray-300 hover:text-gold-400 transition-colors">الموقع والتواصل</a>
+                </nav>
+
+                <!-- Actions & Cart Button -->
+                <div class="flex items-center gap-3">
+                    <a href="tel:0535535087" class="hidden sm:inline-flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-gold-400 px-4 py-2.5 rounded-full text-sm font-bold border border-gold-500/30 transition-all">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>053 553 5087</span>
+                    </a>
+                    
+                    <button onclick="toggleCartModal()" class="relative bg-gold-500 hover:bg-gold-600 text-black px-4 py-2.5 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg shadow-gold-500/30 transition-all transform hover:scale-105">
+                        <i class="fa-solid fa-basket-shopping text-lg"></i>
+                        <span>السلة</span>
+                        <span id="cartBadgeCount" class="bg-black text-gold-400 text-xs w-5 h-5 rounded-full flex items-center justify-center font-black">0</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-[85vh] flex items-center justify-center bg-zinc-950 overflow-hidden py-16">
+        <!-- Background Decorative Elements -->
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-red-600/10 rounded-full blur-3xl"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+            
+            <!-- Working Status Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-bold mb-6 animate-pulse">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                <span>مفتوح حالياً · يغلق عند الساعة ٤:٠٠ صباحاً</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight leading-tight mb-6">
+                طعم البروستد المقرمش <br>
+                <span class="gold-gradient-text">والشاورما على أصولها</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-gray-300 text-base sm:text-lg mb-8 leading-relaxed">
+                استمتع بألذ وجبات البروستد، الشاورما العربية، البرجر المشوي والعصائر الطازجة. أعدت بكل إتقان باستخدام أجود المكونات الطازجة يومياً في الرياض.
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
+                <span class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-gold-400 text-sm font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-drumstick-bite"></i> بروستد طازج
+                </span>
+                <span class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-gold-400 text-sm font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-utensils"></i> شاورما مميزة
+                </span>
+                <span class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-gold-400 text-sm font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-burger"></i> برجر شهي
+                </span>
+                <span class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-gold-400 text-sm font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-glass-water"></i> عصائر طازجة
+                </span>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu" class="w-full sm:w-auto bg-gold-500 hover:bg-gold-600 text-black px-8 py-4 rounded-2xl font-black text-lg transition-all transform hover:-translate-y-1 shadow-xl shadow-gold-500/20 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>استعرض قائمة الطعام</span>
+                </a>
+                <a href="https://wa.me/966535535087" target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-2xl font-black text-lg transition-all transform hover:-translate-y-1 shadow-xl shadow-emerald-600/20 flex items-center justify-center gap-3">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>طلب سريع عبر الواتساب</span>
+                </a>
+            </div>
+
+            <!-- Rating Banner -->
+            <div class="mt-12 inline-flex items-center gap-4 bg-zinc-900/80 border border-zinc-800 px-6 py-3 rounded-2xl">
+                <div class="flex text-gold-400 text-sm">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span class="text-white font-bold text-sm">3.7 من 5</span>
+                <span class="text-zinc-500">|</span>
+                <span class="text-gray-400 text-sm">أكثر من 100+ تقييم على الخرائط</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Menu Section -->
+    <section id="menu" class="py-20 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-5xl font-black text-white mb-4">قائمة الطعام (المنيو)</h2>
+                <p class="text-gray-400 text-base sm:text-lg max-w-xl mx-auto">اختر أصنافك المفضلة وأضفها للسلة للطلب المباشر</p>
+            </div>
+
+            <!-- Menu Category Tabs -->
+            <div class="flex items-center justify-start md:justify-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar" id="categoryTabs">
+                <button onclick="filterCategory('all')" class="tab-btn active bg-gold-500 text-black px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all shadow-md">
+                     الكل
+                </button>
+                <button onclick="filterCategory('broasted')" class="tab-btn bg-zinc-800 hover:bg-zinc-700 text-gray-300 px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all">
+                    🍗 البروستد
+                </button>
+                <button onclick="filterCategory('shawarma')" class="tab-btn bg-zinc-800 hover:bg-zinc-700 text-gray-300 px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all">
+                    🌯 الشاورما
+                </button>
+                <button onclick="filterCategory('burger')" class="tab-btn bg-zinc-800 hover:bg-zinc-700 text-gray-300 px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all">
+                    🍔 البرجر والبطاطس
+                </button>
+                <button onclick="filterCategory('juices')" class="tab-btn bg-zinc-800 hover:bg-zinc-700 text-gray-300 px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all">
+                    🍹 العصائر
+                </button>
+                <button onclick="filterCategory('drinks')" class="tab-btn bg-zinc-800 hover:bg-zinc-700 text-gray-300 px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all">
+                    🥤 المشروبات
+                </button>
+            </div>
+
+            <!-- Menu Grid Container -->
+            <div id="menuItemsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Items populated by JavaScript -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Services & Features Section -->
+    <section id="features" class="py-20 bg-zinc-950 border-t border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-black text-white mb-4">مميزات وخدمات المطعم</h2>
+                <p class="text-gray-400">حرص تام على توفير أفضل تجربة تناول طعام لك ولعائلتك</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl text-center hover:border-gold-500/50 transition-all">
+                    <div class="w-16 h-16 gold-gradient-bg text-black rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-bold shadow-lg shadow-gold-500/20">
+                        <i class="fa-solid fa-chair"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">الجلوس داخل المكان</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        جلسات مريحة ونظيفة لاستقبال الزوار والعائلات للاستمتاع بالأكل وهو ساخن وطازج.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl text-center hover:border-gold-500/50 transition-all">
+                    <div class="w-16 h-16 gold-gradient-bg text-black rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-bold shadow-lg shadow-gold-500/20">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">طعام سفري وتجهيز سريع</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        إمكانية الطلب المسبق هاتفياً واستلام وجبتك ساخنة بدون إضاعة وقتك في الانتظار.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl text-center hover:border-gold-500/50 transition-all">
+                    <div class="w-16 h-16 gold-gradient-bg text-black rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-bold shadow-lg shadow-gold-500/20">
+                        <i class="fa-solid fa-motorcycle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">التسليم والتوصيل</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        خدمة تسليم سلسة وحريصة على معايير السلامة والجودة ليصلك الطعام بأفضل حالة.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Info Section -->
+    <section id="location" class="py-20 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Information -->
+                <div>
+                    <span class="text-gold-400 font-bold text-sm tracking-wider uppercase mb-2 block">معلومات الموقع والتواصل</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white mb-6">زورونا في فرعنا بالرياض</h2>
+
+                    <div class="space-y-6 text-gray-300">
+                        
+                        <!-- Address -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-gold-400 text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">العنوان</h4>
+                                <p class="text-sm text-gray-400 mt-1">طريق خديجة بنت خويلد، العريجاء الغربية، الرياض 14913</p>
+                                <a href="https://maps.google.com/?q=طريق+خديجة+بنت+خويلد+العريجاء+الغربية+الرياض" target="_blank" class="inline-flex items-center gap-2 text-gold-400 text-sm font-bold mt-2 hover:underline">
+                                    <span>افتح في خرائط جوجل</span>
+                                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-gold-400 text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">رقم الطلبات والاتصال</h4>
+                                <p class="text-sm text-gray-400 mt-1" dir="ltr">053 553 5087</p>
+                                <div class="flex gap-3 mt-2">
+                                    <a href="tel:0535535087" class="bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-1.5 rounded-lg text-xs font-bold transition-all border border-zinc-700">اتصال هاتف</a>
+                                    <a href="https://wa.me/966535535087" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-1.5 rounded-lg text-xs font-bold transition-all">محادثة واتساب</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hours -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-gold-400 text-xl shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">أوقات العمل</h4>
+                                <p class="text-sm text-gray-400 mt-1">يومياً: من الساعة 12:00 ظهراً وحتى الساعة 4:00 صباحاً</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Google Maps Card / Frame -->
+                <div class="bg-zinc-950 p-4 rounded-3xl border border-zinc-800 gold-border-glow">
+                    <div class="relative w-full h-80 rounded-2xl overflow-hidden bg-zinc-800 flex items-center justify-center">
+                        <iframe 
+                            title="موقع المطعم"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3626.541454178619!2d46.611111!3d24.633333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDM4JzAwLjAiTiA0NsKwMzYnNDAuMCJF!5e0!3m2!1sar!2ssa!4v1620000000000!5m2!1sar!2ssa" 
+                            class="w-full h-full border-0 filter opacity-80 contrast-125" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                        <div class="absolute bottom-4 right-4 left-4 bg-zinc-900/95 backdrop-blur-md p-4 rounded-xl border border-zinc-700 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-map-pin text-gold-400 text-xl"></i>
+                                <span class="text-xs font-bold text-white">طريق خديجة بنت خويلد، العريجاء الغربية</span>
+                            </div>
+                            <a href="https://maps.google.com/?q=طريق+خديجة+بنت+خويلد+العريجاء+الغربية+الرياض" target="_blank" class="bg-gold-500 text-black px-3 py-1.5 rounded-lg text-xs font-bold">توجيه</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-10 border-t border-zinc-800 text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <span class="text-xl font-black text-white">مطعم بروستد الأجنحة الذهبية</span>
+            </div>
+            <p class="mb-6 text-xs text-gray-500">جميع الحقوق محفوظة © 2026 - أفضل بروستد وشاورما في العريجاء الغربية، الرياض</p>
+            <div class="flex justify-center gap-6 text-gray-400">
+                <a href="https://wa.me/966535535087" target="_blank" class="hover:text-gold-400"><i class="fa-brands fa-whatsapp text-xl"></i></a>
+                <a href="tel:0535535087" class="hover:text-gold-400"><i class="fa-solid fa-phone text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Floating Drawer / Modal -->
+    <div id="cartModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex justify-end">
+        <div class="w-full max-w-md bg-zinc-900 h-full flex flex-col shadow-2xl border-r border-zinc-800 transform transition-transform duration-300">
+            
+            <!-- Cart Header -->
+            <div class="p-6 border-b border-zinc-800 flex items-center justify-between bg-zinc-950">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-basket-shopping text-gold-400 text-xl"></i>
+                    <h3 class="text-xl font-bold text-white">سلة الطلبات</h3>
+                </div>
+                <button onclick="toggleCartModal()" class="text-gray-400 hover:text-white text-xl p-2">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Cart Items List -->
+            <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-6 space-y-4">
+                <!-- Cart items inserted dynamically -->
+            </div>
+
+            <!-- Cart Footer & Checkout -->
+            <div class="p-6 border-t border-zinc-800 bg-zinc-950 space-y-4">
+                <div class="flex items-center justify-between text-lg font-bold">
+                    <span class="text-gray-400">الإجمالي:</span>
+                    <span id="cartTotalPrice" class="text-gold-400 text-2xl font-black">0 ر.س</span>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="block text-xs font-bold text-gray-400">ملاحظات الطلب (اختياري):</label>
+                    <input type="text" id="orderNotes" placeholder="مثال: الشاورما بدون مخلل / زيادة ثوم" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500">
+                </div>
+
+                <button onclick="sendOrderToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-emerald-600/20 transition-all">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>إرسال الطلب عبر الواتساب</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Floating Action Button for Quick Whatsapp Order -->
+    <a href="https://wa.me/966535535087" target="_blank" class="fixed bottom-6 right-6 z-30 bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-600/40 text-2xl transition-all transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 left-6 z-50 bg-gold-500 text-black px-6 py-3 rounded-2xl font-bold shadow-2xl transition-all duration-300 opacity-0 pointer-events-none transform translate-y-4">
+        تمت إضافة الصنف للسلة!
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Menu Data extracted directly from restaurant menu images
+        const menuData = [
+            // Broasted (البروستد)
+            { id: 101, name: "بروستد دجاج عادي", category: "broasted", price: 18, desc: "4 قطع دجاج عادي + بطاطس + ثوم + خبز", icon: "🍗" },
+            { id: 102, name: "بروستد دجاج حراق", category: "broasted", price: 18, desc: "4 قطع دجاج حار + بطاطس + ثوم حار + خبز", icon: "🌶️" },
+            { id: 103, name: "بروستد أجنحة عادي", category: "broasted", price: 16, desc: "أجنحة دجاج مقرمشة عادي مع البطاطس والصوص", icon: "🍗" },
+            { id: 104, name: "بروستد أجنحة حراق", category: "broasted", price: 16, desc: "أجنحة دجاج حارة ومقرمشة مع البطاطس والصوص", icon: "🌶️" },
+            { id: 105, name: "بروستد مسحب عادي", category: "broasted", price: 18, desc: "قطع مسحب دجاج عادي مع صوص وبطاطس", icon: "🍢" },
+            { id: 106, name: "بروستد مسحب حراق", category: "broasted", price: 18, desc: "قطع مسحب دجاج حار مع صوص وبطاطس", icon: "🔥" },
+            { id: 107, name: "سمك فيليه عادي", category: "broasted", price: 19, desc: "قطع سمك فيليه مقرمش طازج", icon: "🐟" },
+            { id: 108, name: "سمك فيليه حراق", category: "broasted", price: 19, desc: "قطع سمك فيليه بتتبيلة حارة مقرمشة", icon: "🌶️" },
+            { id: 109, name: "روبيان مقرمش عادي", category: "broasted", price: 21, desc: "قطع روبيان مقلي عادي مع الصوص", icon: "🍤" },
+            { id: 110, name: "روبيان مقرمش حراق", category: "broasted", price: 21, desc: "قطع روبيان مقلي حار مع الصوص", icon: "🍤" },
+            { id: 111, name: "بطاطس صغير", category: "broasted", price: 5, desc: "بطاطس مقلية مقرمشة حجم صغير", icon: "🍟" },
+            { id: 112, name: "بطاطس كبير", category: "broasted", price: 10, desc: "بطاطس مقلية مقرمشة حجم كبير", icon: "🍟" },
+            { id: 113, name: "ثوم صغير / حمص", category: "broasted", price: 2, desc: "علبة ثوم أو حمص صغير", icon: "🧄" },
+
+            // Shawarma (الشاورما)
+            { id: 201, name: "شاورما ساندويتش", category: "shawarma", price: 5, desc: "شاورما دجاج طازجة بالخبز العادي", icon: "🌯" },
+            { id: 202, name: "شاورما صاروخ", category: "shawarma", price: 11, desc: "ساندويتش شاورما حجم كبير", icon: "🌯" },
+            { id: 203, name: "شاورما جامبو", category: "shawarma", price: 11, desc: "ساندويتش جامبو مشبع برول خاص", icon: "🌯" },
+            { id: 204, name: "صاروخ تركي سبيشيل", category: "shawarma", price: 12, desc: "شاورما صاروخ على الطريقة التركية الممتازة", icon: "🥙" },
+            { id: 205, name: "عربي سنجل", category: "shawarma", price: 16, desc: "وجبة شاورما عربي مقطعة مع بطاطس وثوم", icon: "🍱" },
+            { id: 206, name: "عربي دبل", category: "shawarma", price: 29, desc: "وجبة عربي دبل مقطعة مع ملحقاتها", icon: "🍱" },
+            { id: 207, name: "عربي تركي سبيشيل", category: "shawarma", price: 18, desc: "وجبة شاورما عربي تركي مميزة", icon: "🥙" },
+            { id: 208, name: "صحن شاورما صغير", category: "shawarma", price: 16, desc: "صحن لحم/دجاج شاورما خالص", icon: "🍽️" },
+            { id: 209, name: "صحن شاورما وسط", category: "shawarma", price: 22, desc: "صحن شاورما متوسط تكفي شخصين", icon: "🍽️" },
+            { id: 210, name: "صحن شاورما كبير", category: "shawarma", price: 28, desc: "صحن شاورما كبير مشكل", icon: "🍽️" },
+            { id: 211, name: "صحن شاورما عائلة", category: "shawarma", price: 48, desc: "صحن عائلي ضخم مناسب للمجموعات", icon: "👨‍👩‍👧‍👦" },
+
+            // Burgers & Fries (البرجر والبطاطس)
+            { id: 301, name: "برجر دجاج", category: "burger", price: 7, desc: "شريحة دجاج مع الخس والصوص الخاصة", icon: "🍔" },
+            { id: 302, name: "برجر دجاج دبل", category: "burger", price: 12, desc: "شريحتي دجاج مع مضاعفة الجبن والصوص", icon: "🍔" },
+            { id: 303, name: "برجر كريسبي", category: "burger", price: 10, desc: "دجاج مقرمش كريسبي مع صوص الجبن", icon: "🍔" },
+
+            // Juices (العصائر)
+            { id: 401, name: "عصير كوكتيل", category: "juices", price: 7, desc: "عصير كوكتيل الفواكه المشكلة الطازجة", icon: "🍹" },
+            { id: 402, name: "عصير رمان", category: "juices", price: 7, desc: "عصير رمان طبيعي طازج 100%", icon: "🥤" },
+            { id: 403, name: "عصير برتقال خلاط", category: "juices", price: 9, desc: "برتقال طازج معصور فورياً", icon: "🍊" },
+            { id: 404, name: "عصير مانجو", category: "juices", price: 7, desc: "عصير مانجو استوائي غني", icon: "🥭" },
+            { id: 405, name: "عصير فراولة", category: "juices", price: 7, desc: "عصير فراولة بارد ومنعش", icon: "🍓" },
+            { id: 406, name: "عصير اڤوكادو", category: "juices", price: 10, desc: "عصير أفوكادو طبيعي مع العسل", icon: "🥑" },
+            { id: 407, name: "عصير عوار قلب", category: "juices", price: 10, desc: "مزيج عوار القلب الشهير بالفراولة والمانجو", icon: "🍹" },
+
+            // Drinks (المشروبات الغازية)
+            { id: 501, name: "بيبسي / Pepsi", category: "drinks", price: 3, desc: "مشروب غازي 330 مل", icon: "🥤" },
+            { id: 502, name: "سفن اب / 7Up", category: "drinks", price: 3, desc: "مشروب غازي 330 مل", icon: "🥤" },
+            { id: 503, name: "حمضيات / Citrus", category: "drinks", price: 3, desc: "مشروب غازي 330 مل", icon: "🥤" },
+            { id: 504, name: "ديو / Mountain Dew", category: "drinks", price: 3, desc: "مشروب غازي 330 مل", icon: "🥤" },
+            { id: 505, name: "ليتر بيبسي", category: "drinks", price: 6, desc: "عبوة بيبسي حجم 1 ليتر", icon: "🍾" },
+            { id: 506, name: "بيبسي عائلة", category: "drinks", price: 10, desc: "عبوة بيبسي عائلية كبيرة", icon: "🍾" },
+            { id: 507, name: "ماء", category: "drinks", price: 1, desc: "مياه نقية باردة", icon: "💧" }
+        ];
+
+        // State Management
+        let cart = [];
+
+        // Initialize UI on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMenuItems('all');
+            updateCartUI();
+        });
+
+        // Filter Categories
+        function filterCategory(category) {
+            // Update tab styles
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-gold-500', 'text-black', 'active');
+                tab.classList.add('bg-zinc-800', 'text-gray-300');
+            });
+
+            event.currentTarget.classList.remove('bg-zinc-800', 'text-gray-300');
+            event.currentTarget.classList.add('bg-gold-500', 'text-black', 'active');
+
+            renderMenuItems(category);
+        }
+
+        // Render Menu Grid
+        function renderMenuItems(category) {
+            const grid = document.getElementById('menuItemsGrid');
+            const items = category === 'all' 
+                ? menuData 
+                : menuData.filter(item => item.category === category);
+
+            grid.innerHTML = items.map(item => `
+                <div class="bg-zinc-950 border border-zinc-800/80 hover:border-gold-500/40 rounded-3xl p-6 flex flex-col justify-between transition-all hover:scale-[1.02] shadow-lg group">
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                ${item.icon}
+                            </div>
+                            <span class="text-gold-400 font-black text-xl bg-gold-500/10 border border-gold-500/20 px-3 py-1 rounded-xl">
+                                ${item.price} <span class="text-xs">ر.س</span>
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">${item.name}</h3>
+                        <p class="text-xs text-gray-400 mb-6 leading-relaxed">${item.desc}</p>
+                    </div>
+
+                    <button onclick="addToCart(${item.id})" class="w-full bg-zinc-900 hover:bg-gold-500 hover:text-black border border-zinc-700 hover:border-gold-500 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>إضافة للسلة</span>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Add Item to Cart
+        function addToCart(itemId) {
+            const product = menuData.find(item => item.id === itemId);
+            const existingItem = cart.find(item => item.id === itemId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showToast(`تمت إضافة "${product.name}" إلى السلة`);
+        }
+
+        // Remove / Decrement Item
+        function updateQuantity(itemId, change) {
+            const item = cart.find(item => item.id === itemId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== itemId);
+                }
+            }
+            updateCartUI();
+        }
+
+        // Update Cart Drawer & Badge UI
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const totalCountBadge = document.getElementById('cartBadgeCount');
+            const totalPriceElement = document.getElementById('cartTotalPrice');
+
+            // Badge Count Calculation
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            totalCountBadge.textContent = totalCount;
+
+            // Total Price Calculation
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            totalPriceElement.textContent = `${totalPrice} ر.س`;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="h-64 flex flex-col items-center justify-center text-center text-gray-500">
+                        <i class="fa-solid fa-basket-shopping text-5xl mb-4 opacity-40"></i>
+                        <p class="font-bold text-base">السلة فارغة حالياً</p>
+                        <p class="text-xs text-gray-600 mt-1">تصفح القائمة وأضف وجباتك المفضلة</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800 flex items-center justify-between">
+                    <div>
+                        <h4 class="font-bold text-white text-sm">${item.name}</h4>
+                        <span class="text-xs text-gold-400 font-bold">${item.price * item.quantity} ر.س</span>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded-xl">
+                        <button onclick="updateQuantity(${item.id}, -1)" class="text-gray-400 hover:text-white font-bold w-6 text-center">-</button>
+                        <span class="text-white font-bold text-sm">${item.quantity}</span>
+                        <button onclick="updateQuantity(${item.id}, 1)" class="text-gold-400 hover:text-white font-bold w-6 text-center">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Open/Close Cart Drawer
+        function toggleCartModal() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('hidden');
+        }
+
+        // Send Order to WhatsApp
+        function sendOrderToWhatsApp() {
+            if (cart.length === 0) {
+                alert('الرجاء إضافة أصناف إلى السلة أولاً!');
+                return;
+            }
+
+            const notes = document.getElementById('orderNotes').value.trim();
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            let message = `*طلب جديد - مطعم بروستد الأجنحة الذهبية*%0A`;
+            message += `---------------------------------%0A`;
+            
+            cart.forEach((item, index) => {
+                message += `${index + 1}. *${item.name}* (العدد: ${item.quantity}) - ${item.price * item.quantity} ر.س%0A`;
+            });
+
+            message += `---------------------------------%0A`;
+            message += `*الإجمالي:* ${totalPrice} ر.س%0A`;
+
+            if (notes) {
+                message += `*ملاحظات الطلب:* ${notes}%0A`;
+            }
+
+            message += `%0Aشكراً لكم! أرجو تأكيد الطلب وتجهيزه.`;
+
+            const phone = "966535535087";
+            const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Toast Feedback Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+            }, 2500);
+        }
+    </script>
+
+</body>
+</html>
+```
